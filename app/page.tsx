@@ -11,7 +11,9 @@ export default function Home() {
     const handleKeyDown = (e: KeyboardEvent) => {
       const regex = /^[a-zA-Z0-9 !@#$%^&*()-_=+[{\]};:'"\<.>/?|\\]+$/;
       const key = e.key;
-      if (regex.test(key) && key.length == 1) {
+      if (key === "Backspace") {
+        setCommand(`${command.slice(0, -1)}`);
+      } else if (regex.test(key) && key.length == 1) {
         setCommand(`${command}${key}`);
       }
     };
