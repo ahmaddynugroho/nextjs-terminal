@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 export default function Prompt({
   userPath,
   userCommand,
+  isLatest,
 }: {
   userPath: string;
   userCommand: string;
+  isLatest: boolean;
 }) {
   const [cursor, setCursor] = useState(true);
 
@@ -24,7 +26,9 @@ export default function Prompt({
       <span>:</span>
       <span className="text-blue-500">{userPath}</span>
       <span>$ {userCommand}</span>
-      <span className={cursor ? "inline" : "hidden"}>_</span>
+      {isLatest &&
+        <span className={cursor ? "inline" : "hidden"}>_</span>
+      }
     </span>
   );
 }

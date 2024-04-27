@@ -42,11 +42,12 @@ export default function Home() {
               <Prompt
                 userPath={pathPrompt.path}
                 userCommand={pathPrompt.command}
+                isLatest={false}
               />
             </li>
           ))}
         <li>
-          <Prompt userPath={path} userCommand={command} />
+          <Prompt userPath={path} userCommand={command} isLatest={true} />
         </li>
       </ul>
     </>
