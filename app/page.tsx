@@ -18,8 +18,13 @@ export default function Home() {
       const regex = /^[a-zA-Z0-9 !@#$%^&*()-_=+[{\]};:'"\<.>/?|\\]+$/;
       const key = e.key;
       if (key === "Enter") {
-        setHistory([...history, { path, command }]);
-        setCommand("");
+        if (command === "cls") {
+          setHistory([]);
+          setCommand("");
+        } else {
+          setHistory([...history, { path, command }]);
+          setCommand("");
+        }
       } else if (key === "Backspace") {
         setCommand(`${command.slice(0, -1)}`);
       } else if (regex.test(key) && key.length == 1) {
