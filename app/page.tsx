@@ -12,6 +12,7 @@ export default function Home() {
       command: string;
     }[]
   >([]);
+  const [dir, setDir] = useState([]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -21,6 +22,9 @@ export default function Home() {
         if (command === "cls") {
           setHistory([]);
           setCommand("");
+        } else if (command === "mkdir") {
+          setHistory([...history, { path, command }]);
+          setCommand("WIP bro");
         } else {
           setHistory([...history, { path, command }]);
           setCommand("");
