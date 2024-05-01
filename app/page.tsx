@@ -12,7 +12,7 @@ export default function Home() {
       command: string;
     }[]
   >([]);
-  const [dir, setDir] = useState([]);
+  const [dir, setDir] = useState<string[]>([]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -22,9 +22,15 @@ export default function Home() {
         if (command === "cls") {
           setHistory([]);
           setCommand("");
-        } else if (command === "mkdir") {
+        } else if (command.split(" ")[0] === "mkdir") {
+          const newDir = command.split(" ")[1];
+          setDir([...dir, newDir]);
           setHistory([...history, { path, command }]);
           setCommand("WIP bro");
+          console.log(dir);
+        } else if (command === "ls") {
+          const lsDir = dir.map((d) => ({ path: path, command: <li>{d}</li> }));
+          // setHistory([...history, ...lsDir]);
         } else {
           setHistory([...history, { path, command }]);
           setCommand("");
