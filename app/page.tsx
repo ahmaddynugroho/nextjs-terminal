@@ -29,8 +29,7 @@ export default function Home() {
           setCommand("WIP bro");
           console.log(dir);
         } else if (command === "ls") {
-          const lsDir = dir.map((d) => ({ path: path, command: <li>{d}</li> }));
-          // setHistory([...history, ...lsDir]);
+          console.log(dir);
         } else {
           setHistory([...history, { path, command }]);
           setCommand("");
