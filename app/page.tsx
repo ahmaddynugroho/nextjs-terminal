@@ -26,8 +26,6 @@ export default function Home() {
           const newDir = command.split(" ")[1];
           setDir([...dir, newDir]);
           setHistory([...history, { path, command }]);
-          setCommand("WIP bro");
-          console.log(dir);
         } else if (command === "ls") {
           console.log(dir);
         } else {
