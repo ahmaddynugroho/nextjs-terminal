@@ -6,10 +6,12 @@ export default function Prompt({
   userPath,
   userCommand,
   isLatest,
+  textOutput,
 }: {
   userPath: string;
   userCommand: string;
   isLatest: boolean;
+  textOutput?: string;
 }) {
   const [cursor, setCursor] = useState(true);
 
@@ -20,7 +22,9 @@ export default function Prompt({
     return () => clearInterval(cursorInterval);
   }, [cursor]);
 
-  return (
+  const command = textOutput ? (
+    <span>{textOutput}</span>
+  ) : (
     <span>
       <span className="text-green-500">you@miku4j</span>
       <span>:</span>
@@ -29,4 +33,6 @@ export default function Prompt({
       {isLatest && <span className={cursor ? "inline" : "hidden"}>_</span>}
     </span>
   );
+
+  return command;
 }
