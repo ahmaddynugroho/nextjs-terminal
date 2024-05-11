@@ -26,9 +26,7 @@ export default function Prompt({
       <span>:</span>
       <span className="text-blue-500">{userPath}</span>
       <span>$ {userCommand}</span>
-      {isLatest &&
-        <span className={cursor ? "inline" : "hidden"}>_</span>
-      }
+      {isLatest && <span className={cursor ? "inline" : "hidden"}>_</span>}
     </span>
   );
 }
