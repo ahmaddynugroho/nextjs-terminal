@@ -26,7 +26,7 @@ export default function Home() {
           const newDir = command.split(" ")[1];
           setDir([...dir, newDir]);
           setHistory([...history, { path, command }]);
-          setCommand("")
+          setCommand("");
         } else if (command === "ls") {
           console.log(dir);
         } else {
@@ -50,8 +50,8 @@ export default function Home() {
     <>
       <ul className="max-w-full">
         {history &&
-          history.map((pathPrompt) => (
-            <li>
+          history.map((pathPrompt, i) => (
+            <li key={i}>
               <Prompt
                 userPath={pathPrompt.path}
                 userCommand={pathPrompt.command}
