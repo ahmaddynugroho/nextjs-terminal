@@ -26,7 +26,7 @@ export default function Home() {
           setCommand("");
         } else if (command.split(" ")[0] === "mkdir") {
           const newDir = command.split(" ")[1];
-          setDir([...dir, newDir]);
+          setDir([...dir, `drwxr-xr-x 2 you you    4096 May  2 10:25 ${newDir}`]);
           setHistory([...history, { path, command, type: "in" }]);
           setCommand("");
         } else if (command === "ls") {
