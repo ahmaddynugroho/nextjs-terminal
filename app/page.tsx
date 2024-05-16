@@ -26,15 +26,24 @@ export default function Home() {
           setCommand("");
         } else if (command.split(" ")[0] === "mkdir") {
           const newDir = command.split(" ")[1];
-          setDir([...dir, `drwxr-xr-x 2 you you    4096 May  2 10:25 ${newDir}`]);
+          setDir([...dir, ` ${newDir}`]);
+          // setDir([...dir, `drwxr-xr-x 2 you you    4096 May  2 10:25 ${newDir}`]);
+          setDir([...dir, newDir]);
           setHistory([...history, { path, command, type: "in" }]);
           setCommand("");
-        } else if (command === "ls") {
-          const formatDir: History = dir.map((d) => ({
+        } else if (command === "ls" || command.split(" ")[0] === "ls") {
+          let formatDir: History = dir.map((d) => ({
             path,
             command: d,
             type: "out",
           }));
+          if (command.split(" ")[1] === "-a") {
+            formatDir = dir.map((d) => ({
+              path,
+              command: `drwxr-xr-x 2 you you    4096 May  2 10:25 ${d}`,
+              type: "out",
+            }));
+          }
           setHistory([...history, { path, command, type: "in" }, ...formatDir]);
           setCommand("");
         } else {
