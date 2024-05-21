@@ -32,7 +32,8 @@ export default function Home() {
           setHistory([...history, { path, command, type: "in" }]);
           setCommand("");
         } else if (command === "ls" || command.split(" ")[0] === "ls") {
-          let formatDir: History = dir.map((d) => ({
+          const visibleDir = dir.filter(d => !d.includes('.'))
+          let formatDir: History = visibleDir.map((d) => ({
             path,
             command: d,
             type: "out",
