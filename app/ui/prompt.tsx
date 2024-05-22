@@ -22,17 +22,19 @@ export default function Prompt({
     return () => clearInterval(cursorInterval);
   }, [cursor]);
 
-  const command = textOutput ? (
-    <span>{textOutput}</span>
-  ) : (
-    <span>
-      <span className="text-green-500">you@miku4j</span>
-      <span>:</span>
-      <span className="text-blue-500">{userPath}</span>
-      <span>$ {userCommand}</span>
-      {isLatest && <span className={cursor ? "inline" : "hidden"}>_</span>}
-    </span>
+  return (
+    <>
+      {textOutput ? (
+        <span>{textOutput}</span>
+      ) : (
+        <span>
+          <span className="text-green-500">you@miku4j</span>
+          <span>:</span>
+          <span className="text-blue-500">{userPath}</span>
+          <span>$ {userCommand}</span>
+          {isLatest && <span className={cursor ? "inline" : "hidden"}>_</span>}
+        </span>
+      )}
+    </>
   );
-
-  return command;
 }
